@@ -1,7 +1,9 @@
-let express = require('express');
+const express = require('express');
 
+const catalogueController = require('./demo.js')
 
-let app = express()
+const app = express()
+app.use(catalogueController)
 app.get('/', function (req, res) { res.send('Welcome') })
 
 
@@ -39,4 +41,9 @@ app.route('/home')
 
 // redirect to another page
 app.get('/about/old', function (req, res){ res.redirect('/about')})
+
+//download
+app.get('/pdf', (req, res) => {
+    res.download(__dirname + '/demo.js') }) // can be used and .sendFile
+  
 app.listen(3000)
