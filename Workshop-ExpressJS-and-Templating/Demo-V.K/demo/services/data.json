@@ -1,0 +1,26 @@
+{
+    "1234": {
+        "name": "Chocolate Souflle",
+        "imageUrl": "https://th.bing.com/th/id/OIP.zHiNCl9VmJUUXxLTTYIL2wHaE8?pid=ImgDet&rs=1",
+        "description": "Dark and intense in flavor, yet with a light and custardy texture, a chocolate soufflé is an eternal showstopper of a dessert. To get that intense chocolate flavor, this version uses a base of melted butter and chocolate without any starch.",
+        "price": "$5.99"
+    },
+    "5678": {
+        "name": "Tiramisu",
+        "imageUrl": "https://ru.oddviser.com/photo/idea/1600/715.jpg",
+        "description": "Tiramisu  from italian -tirami su, \"pick me up\" or \"cheer me up\") is a coffee-flavoured Italian dessert. It is made of ladyfingers (savoiardi) dipped in coffee, layered with a whipped mixture of eggs, sugar, and mascarpone cheese, flavoured with cocoa. The recipe has been adapted into many varieties of cakes and other desserts.[",
+        "price": "$10.00"
+    },
+    "91011": {
+        "name": "BAKLAVA ",
+        "imageUrl": "https://fakeginger.com/wp-content/uploads/2009/12/4044998482_ca6589039f_z.jpg",
+        "description": "Baklava is made from layers of paper-thin filo pastry, butter, chopped nuts and a sweet syrup fragranced with rose or orange blossom water. It’s normally made in big tins, baked and then drizzled with even more syrup before cutting into smaller pieces. ",
+        "price": "$10.99"
+    },
+    "1213": {
+        "name": "Cheesecake",
+        "imageUrl": "https://static.onecms.io/wp-content/uploads/sites/39/2019/09/20224319/p_R115284.jpg",
+        "description": "Cheesecake is a sweet dessert consisting of one or more layers. The main, and thickest, layer consists of a mixture of a soft, fresh cheese (typically cottage cheese, cream cheese or ricotta), eggs, and sugar. If there is a bottom layer, it most often consists of a crust or base made from crushed cookies (or digestive biscuits), graham crackers, pastry, or sometimes sponge cake.Cheesecake may be baked or unbaked (and is usually refrigerated). ",
+        "price": "$7.99"
+    }
+}

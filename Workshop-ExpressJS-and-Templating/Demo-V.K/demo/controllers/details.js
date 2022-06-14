@@ -1,5 +1,11 @@
 module.exports = {
-    details(req, res) {
-        res.render('details',)
+   async  details(req, res) {
+    const id=req.params.id
+    const desert = await req.storage.getById(id)
+    if(desert){
+        res.render('details',{title:`${desert.name}`,desert})
+    }else{
+        res.redirect('/404')
+    }
     }
 }

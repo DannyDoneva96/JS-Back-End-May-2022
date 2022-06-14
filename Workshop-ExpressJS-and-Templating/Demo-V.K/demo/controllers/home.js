@@ -1,5 +1,7 @@
 module.exports={
-    home(req, res) {
-        res.render('index',{layout:false})
+   async home(req, res) {
+        const deserts = await req.storage.getAll();
+
+        res.render('index',{deserts,title:"DESSERTS"})
     }
 }
