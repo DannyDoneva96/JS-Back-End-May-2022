@@ -38,6 +38,9 @@ async function getById(id){
     return Object.assign({},{id},desert);
     }else{return undefined}
 }
+async function createDessert(desert){
+
+}
 module.exports = ()=>(req, res, next) =>{
     req.storage={
         getAll,

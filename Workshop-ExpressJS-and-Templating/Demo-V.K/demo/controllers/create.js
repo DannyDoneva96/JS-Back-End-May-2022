@@ -1,5 +1,5 @@
 module.exports = {
     create(req, res) {
-        res.render('create',)
+        res.render('create',{title:'Create Listing'})
     }
 }
