@@ -7,4 +7,6 @@ exports.dbInit = ()=> {
     mongoose.connect(DB_QUERYSTRING);
 
     mongoose.connection.on('open',()=> console.log('BD connected!'))
+    return     mongoose.connect(DB_QUERYSTRING);
+
 };
