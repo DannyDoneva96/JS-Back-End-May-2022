@@ -1,7 +1,7 @@
 //Loads the express module
 const express = require('express');
 
-
+const {dbInit} = require('./config/db')
 const routes = require('./routes')
 //Loads the handlebars module
 const handlebars = require('express-handlebars');
@@ -28,5 +28,7 @@ app.use(routes)
 // //Sets a basic route
 // app.get('/', (req, res) => res.send('Hello World !'));
 
+// start dbInit
+dbInit();
 //Makes the app listen to port 3000
 app.listen(port, () => console.log(`App listening to port ${port}`));
