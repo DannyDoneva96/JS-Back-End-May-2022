@@ -3,7 +3,7 @@ const router = require('express').Router()
 const authService =require('../services/authService')
 
 const COOKIE_SESSION_NAME = 'user'
-
+exports.COOKIE_SESSION_NAME
 router.get('/login',  (req, res)=>{
     res.render('auth/login')
 })
@@ -16,7 +16,7 @@ router.post('/login',  async(req, res)=>{
  const user =  await  authService.login(username, password)
  const token = await authService.createToken(user)
 
- res.cookie(COOKIE_SESSION_NAME,token);
+ res.cookie(COOKIE_SESSION_NAME,token,{httpOnly: true});
  res.redirect('/')
 })
 
@@ -29,12 +29,17 @@ router.post('/register', async (req, res)=>{
   try{
    const createdUser= await authService.create({password, ...userData});
    const token = await authService.createToken(createdUser)
-   res.cookie(COOKIE_SESSION_NAME,token);
+   res.cookie(COOKIE_SESSION_NAME,token,{httpOnly: true});
     res.redirect('/')
   }catch(error){
     return res.render('auth/register',{error: 'password is incorrect'})
   }
    res.end()
+})
+
+router.get('/logout',  (req, res)=>{
+  res.clearCookie(COOKIE_SESSION_NAME)
+  res.redirect('/')
 })
 
 module.exports = router

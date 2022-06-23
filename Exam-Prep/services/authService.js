@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 exports.create = (userData) => User.create(userData)
 const SECRET = '1234567890abcdef'
+exports.SECRET
 exports.login = async (username, password) => {
     const user = await User.findOne({ username })
     if (!user) {

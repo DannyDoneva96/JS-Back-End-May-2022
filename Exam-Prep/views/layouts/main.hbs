@@ -26,17 +26,20 @@
 
             <!-- Do not forget to change the path to the image -->
             <img src="/img/art-logo.png" alt="logo">
-            <a href="#">ArtGallery</a>
+            <a href="/">ArtGallery</a>
 
             <ul class="menu">
                 <li><a href="#">Gallery</a></li>
+                {{#if user}}
                 <!-- Logged users -->
                 <li><a href="#">Create Publication</a></li>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/auth/logout">Logout</a></li>
+                {{else}}
                 <!-- Guest users -->
                 <li><a href="/auth/login">Login</a></li>
                 <li><a href="/auth/register">Register</a></li>
+                {{/if}}
             </ul>
 
         </nav>

@@ -1,10 +1,12 @@
 //Loads the express module
 const express = require('express');
-
-const {dbInit} = require('./config/db')
-const routes = require('./routes')
-//Loads the handlebars module
 const handlebars = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const routes = require('./routes')
+const {dbInit} = require('./config/db')
+const {auth} = require('./middlewares/authMiddleware')
+//Loads the handlebars module
+
 
 //Creates our express server
 const app = express();
@@ -21,8 +23,8 @@ app.use(express.urlencoded({ extended: false }))
 //Serves static files (we need it to import a css file)
 app.use(express.static('public'))
 
-
-
+app.use(cookieParser())
+app.use(auth)
 app.use(routes)
 
 // //Sets a basic route
