@@ -10,4 +10,18 @@ function mapErrors(err){
         return [ {msg:'Request error',}] 
     }
 }
-module.exports =mapErrors;
+
+function postViewModel(post){
+    return {
+        _id: post._id,
+        title:post.title,
+        keyword:post.keyword,
+        location:post.location,
+        date:post.date,
+        image:post.image,
+        description:post.descriptiontitle,
+        author: post.userId,
+        rating:post.rating
+    }
+}
+module.exports ={mapErrors,postViewModel}

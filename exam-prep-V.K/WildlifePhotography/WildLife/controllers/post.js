@@ -3,7 +3,7 @@
 const router = require('express').Router();
 const {isUser}= require('../middleware/guards');
 const { createPost } = require('../services/post');
-const mapErrors = require('../util/mappers')
+const {mapErrors} = require('../util/mappers')
 
 router.get('/create',isUser(),(req, res) => {
     res.render('create',{title: 'create post'});
