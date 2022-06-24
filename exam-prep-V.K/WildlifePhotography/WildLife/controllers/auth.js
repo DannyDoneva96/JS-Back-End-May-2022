@@ -6,7 +6,7 @@ const {isUser , isGuest} = require('../middleware/guards')
 
 router.get('/register',isGuest(), (req, res) => {
     // register viuto demek
-    res.render('register')
+    res.render('register',{title: 'Register Page'})
 })
 //TO DO proveri form actions metodite i poletata s imena
 router.post('/register',isGuest(),async (req, res) => {
@@ -14,32 +14,43 @@ router.post('/register',isGuest(),async (req, res) => {
         if (req.body.password != req.body.repass) {
             throw new Error('password dont match')
         }
-    const user=   await  register(req.body.username, req.body.password)
+        //Korekciq sprqmo tekushtata zadacha 
+    // const user=   await  register(req.body.username, req.body.password)
+    const user=   await  register(req.body.firstName,req.body.lastName,req.body.email, req.body.password)
     req.session.user = user
     res.redirect('/'); //TO DO redirect requirements
     } catch (err) {
         console.error(err)
         const errors = mapErrors(err)
-        res.render('register',{data:{username:req.body.username},errors})
+
+        
+        // tuk sushto 
+        const data = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email
+        }
+        res.render('register',{title: 'Register Page',data,errors})
     }
 })
 
 router.get('/login',isGuest(), (req, res) => {
-    res.render('login')
+    res.render('login',{title:'Login Page'})
 
 })
 //TO DO proveri form actions metodite i poletata s imena
 
 router.post('/login', isGuest(),async(req, res) => {
 try{
-    const user= await login(req.body.username, req.body.password)
+    const user= await login(req.body.email, req.body.password)
     req.session.user = user
     res.redirect('/'); // TO DO redirect requirements
 
 }catch (err) {
     console.error(err);
     const errors = mapErrors(err)
-    res.render('login',{data:{username:req.body.username},errors})
+    //smenih username s email zaradi zadachata
+    res.render('login',{title:'Login Page',data:{email:req.body.email},errors})
 }
 })
 
