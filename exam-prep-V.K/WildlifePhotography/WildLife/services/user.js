@@ -30,7 +30,7 @@ return user;
 
 //TO DO identificirame user sprqmo daden identifikator (email primerno)
 async function getUserByUsername(username) {
-    const user = await User.findOne({ username })
+    const user = await User.findOne({ username : new RegExp(`^${username}$`,'i')})
     return user;
 }
 
