@@ -20,7 +20,7 @@ function postViewModel(post){
         date:post.date,
         image:post.image,
         description:post.descriptiontitle,
-        author: post.userId,
+       
         rating:post.rating
     }
 }
