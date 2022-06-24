@@ -11,7 +11,10 @@ router.get('/register',isGuest(), (req, res) => {
 //TO DO proveri form actions metodite i poletata s imena
 router.post('/register',isGuest(),async (req, res) => {
     try {
-        if (req.body.password != req.body.repass) {
+        if(req.body.password.trim()==''){
+            throw new Error('password invalid')
+
+        }else if (req.body.password != req.body.repass) {
             throw new Error('password dont match')
         }
         //Korekciq sprqmo tekushtata zadacha 

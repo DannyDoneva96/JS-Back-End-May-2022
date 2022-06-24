@@ -5,7 +5,8 @@ const {Schema,model}= require('mongoose')
 
 const userSchema = new Schema({
     //TO DO smenqme
-    firstName:{ type: 'string', required: true},
+    firstName:{ type: 'string', required: true,minlength:[3,'first name has to be at least 3 characters'],},
+   //2chasa i 1 min viktor pravi validator ako mi e neobhodimo
     lastName:{ type: 'string', required: true},
     email:{ type: 'string', required: true},
 
