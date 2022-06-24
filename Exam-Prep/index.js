@@ -5,6 +5,8 @@ const cookieParser = require('cookie-parser');
 const routes = require('./routes')
 const {dbInit} = require('./config/db')
 const {auth} = require('./middlewares/authMiddleware')
+const {errorHandler} = require('./middlewares/errorHandlerMiddleware')
+
 //Loads the handlebars module
 
 
@@ -26,7 +28,7 @@ app.use(express.static('public'))
 app.use(cookieParser())
 app.use(auth)
 app.use(routes)
-
+app.use(errorHandler)
 // //Sets a basic route
 // app.get('/', (req, res) => res.send('Hello World !'));
 

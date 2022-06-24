@@ -1,4 +1,6 @@
 const Publication =require('../models/publications')
 
 
-exports.create = router
+exports.create = (publicationData) => {
+    Publication.create(publicationData)
+}

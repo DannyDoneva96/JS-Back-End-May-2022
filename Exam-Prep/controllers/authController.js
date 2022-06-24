@@ -1,21 +1,18 @@
 const router = require('express').Router()
 
 const authService =require('../services/authService')
+const {COOKIE_SESSION_NAME} = require('../constants')
 const {isGuest,isAuth} = require('../middlewares/authMiddleware')
-// const{getErrorMessage} = require('../utils/errorHelpers')
+const{getErrorMessage} = require('../util/errorHelpers')
 
-const COOKIE_SESSION_NAME = 'user'
-exports.COOKIE_SESSION_NAME
 
-router.get('/login',  (req, res)=>{
+
+router.get('/login',  isGuest,(req, res)=>{
     res.render('auth/login')
 })
-
-router.get('/register', isGuest, (req, res)=>{
-    res.render('auth/register')
-})
-router.post('/login',  async(req, res)=>{
+router.post('/login', isGuest, async(req, res)=>{
     const {username,password} = req.body
+    
  const user =  await  authService.login(username, password)
  const token = await authService.createToken(user)
 
@@ -23,8 +20,14 @@ router.post('/login',  async(req, res)=>{
  res.redirect('/')
 })
 
+
+router.get('/register', isGuest, (req, res)=>{
+    res.render('auth/register')
+})
+
+
 router.post('/register',isGuest, async (req, res)=>{
-  const {password,repeatPassword,...userData} = req.body;
+  const {password,repeatPassword, ...userData} = req.body;
   if(password!==repeatPassword){
     return res.render('auth/register',{error: 'password is incorrect'})
  }

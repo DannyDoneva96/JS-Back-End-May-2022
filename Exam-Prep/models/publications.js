@@ -22,13 +22,13 @@ const publicationShema = new mongoose.Schema({
         type:mongoose.Types.ObjectId,
         ref:'User'
     }, 
-    usersShared:{
+    usersShared:[{
         type:mongoose.Types.ObjectId,
         ref:'User',
         
-    }
+    }]
 
 })
 const Publication = mongoose.model("Publication",publicationShema)
 
-module.exports=Publication
+module.exports = Publication

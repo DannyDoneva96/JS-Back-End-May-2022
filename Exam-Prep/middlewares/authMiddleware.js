@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-const {COOKIE_SESSION_NAME} =require('../controllers/authController')
+const {COOKIE_SESSION_NAME} = require('../constants')
 const {SECRET} = require('../services/authService')
 
 exports.auth = (req, res, next) => {
@@ -8,7 +8,8 @@ exports.auth = (req, res, next) => {
         jwt.verify(token,SECRET,((err,decodedToken)=>{
             if(err){
                 res.clearCookie(COOKIE_SESSION_NAME)
-                return next(err)
+                // return next(err)
+                res.redirect('/login')
             }
             req.user =decodedToken
             res.locals=decodedToken
@@ -16,3 +17,13 @@ exports.auth = (req, res, next) => {
     }else{  next()}
   
 }
+exports.isAuth = (req, res, next) => {
+    if (!req.user){
+    return   res.redirect('/auth/login')
+    }next()
+} 
+exports.isGuest = (req, res, next) => {
+    if (req.user){
+    return   res.redirect('/')
+    }next()
+} 
