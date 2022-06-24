@@ -31,7 +31,7 @@ return user;
 //TO DO identificirame user sprqmo daden identifikator (email primerno)
 async function getUserByUsername(username) {
     const user = await User.findOne({ username })
-    return user
+    return user;
 }
 
 module.exports ={
