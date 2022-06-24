@@ -3,19 +3,22 @@ const bcrypt = require('bcrypt')
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
-        unique: true,
+        required: [true, 'Username is required'],
+        // unique: true,
     },
     password: {
         type: String,
         required: true
 
     },
-    adress: {
+    address: {
         type: String,
-        
-
-    }
+        required: true
+    },
+    publications: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Publication'
+    }]
 })
 
 userSchema.pre('save', function (next) {
