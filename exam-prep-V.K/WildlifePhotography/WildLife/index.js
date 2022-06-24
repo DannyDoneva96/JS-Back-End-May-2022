@@ -1,5 +1,8 @@
 const express = require('express');
 const expressConfig = require('./config/express');
+
+const databaseConfig = require('./config/database')
+const  routesConfig = require('./config/routes')
 // const cookieParser = require('cookie-parser');
 // const routes = require('./routes')
 // const {dbInit} = require('./config/db')
@@ -13,6 +16,8 @@ async function start() {
     const app = express();
 
   expressConfig(app)
+  await databaseConfig(app);
+  routesConfig(app);
     app.get('/', (req, res) => res.render('home', { layout: false }))
     app.listen(3000, () => console.log(`App listening to port 3000`));
 }
